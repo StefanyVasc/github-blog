@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
-import { ComponentProps, ReactNode } from 'react'
+import { ComponentProps, ElementType, ReactNode } from 'react'
 import * as S from './styles'
 
 /* ExternalLinkProps tem tudo que o ExternalLinkContainer pode conter e
@@ -9,7 +9,7 @@ type ExternalLinkProps = ComponentProps<typeof S.ExternalLinkContainer> & {
   text: string
   icon?: ReactNode
   variant?: 'iconLeft'
-  as?: string
+  as?: ElementType
   onClick?: () => void
 }
 
