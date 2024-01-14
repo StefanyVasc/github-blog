@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { ExternalLink } from '../../../../components/ExternalLink'
-import { ProfileContainer, ProfileDetails, ProfilePicture } from './styles'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faBuilding, faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { ExternalLink } from '../../../../components/ExternalLink'
+import * as S from './styles'
 
 export function Profile() {
   return (
-    <ProfileContainer>
-      <ProfilePicture src="https://avatars.githubusercontent.com/u/39599492?v=4" />
-      <ProfileDetails>
+    <S.ProfileContainer>
+      <S.ProfilePicture src="https://avatars.githubusercontent.com/u/39599492?v=4" />
+      <S.ProfileDetails>
         <header>
           <h1>Stefany Sá</h1>
           <ExternalLink text="Github" href="#" />
@@ -28,7 +28,7 @@ export function Profile() {
             100 seguidores
           </li>
         </ul>
-      </ProfileDetails>
-    </ProfileContainer>
+      </S.ProfileDetails>
+    </S.ProfileContainer>
   )
 }
