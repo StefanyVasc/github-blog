@@ -20,6 +20,9 @@ export interface PostType {
   url: {
     login: string
   }
+  user: {
+    login: string
+  }
 }
 
 export function Blog() {
