@@ -1,6 +1,6 @@
 import { ReactNode, ReactElement, FunctionComponent } from 'react'
 import * as S from './styles'
-import ReactMarkdown, { Components } from 'react-markdown'
+import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
@@ -9,9 +9,9 @@ interface PostContentProps {
 }
 
 interface CodeProps {
-  inline: boolean
-  className: string
-  children: ReactNode
+  inline?: boolean
+  className?: string
+  children?: ReactNode
 }
 
 const Code: FunctionComponent<CodeProps> = ({
@@ -20,22 +20,26 @@ const Code: FunctionComponent<CodeProps> = ({
   children,
 }: CodeProps): ReactElement => {
   const match = /language-(\w+)/.exec(className || '')
-  return !inline && match ? (
-    <SyntaxHighlighter style={dracula} language={match[1]} PreTag="div">
-      {String(children).replace(/\n$/, '')}
+  const language = match ? match[1] : undefined
+
+  const contentString = String(children || '')
+
+  return !inline && language ? (
+    <SyntaxHighlighter style={dracula} language={language} PreTag="div">
+      {contentString.replace(/\n$/, '')}
     </SyntaxHighlighter>
   ) : (
     <code
       style={{ whiteSpace: inline ? 'pre-wrap' : 'pre' }}
       className={className}
     >
-      {children}
+      {contentString}
     </code>
   )
 }
 
-const components: Components = {
-  code: Code as FunctionComponent<CodeProps>,
+const components: Record<string, FunctionComponent<CodeProps>> = {
+  code: Code,
 }
 
 export function PostContent({ content }: PostContentProps) {

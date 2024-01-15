@@ -22,6 +22,10 @@ export const PostContentContainer = styled.section`
     padding-left: 1.5rem;
   }
 
+  li::marker {
+    color: ${({ theme }) => theme.colors['brand-blue']};
+  }
+
   pre {
     background: ${({ theme }) => theme.colors['base-post']};
     padding: 1rem;

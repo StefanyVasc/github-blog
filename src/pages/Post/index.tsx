@@ -21,7 +21,6 @@ export function Post() {
       const response = await api.get(
         `/repos/${username}/${reponame}/issues/${id}`,
       )
-      console.log(response)
       setPostData(response.data)
     } finally {
       setIsLoading(false)
@@ -34,7 +33,6 @@ export function Post() {
 
   return (
     <>
-      {console.log(postData)}
       <PostHeader isLoading={isLoading} postData={postData} />
       {!isLoading && <PostContent content={postData.body} />}
     </>
